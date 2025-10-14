@@ -35,6 +35,10 @@ API Endpoints
 - GET /api/health -> {"status":"ok"}
 - GET /api/providers -> Liste verfügbarer Provider
 - POST /api/ai/suggest -> body: {"context":"..."} -> Antwort vom Provider
+- GET /api/laundry/ -> Liste der erfassten Wäschestücke inkl. Status (dirty, washing, drying, clean, folded)
+- POST /api/laundry/ -> Neues Wäschestück anlegen (label, optional material/color/tag_id/status)
+- PATCH /api/laundry/{id} -> Attribute oder Status aktualisieren (inkl. Statuswechsel per Workflow)
+- DELETE /api/laundry/{id} -> Wäschestück entfernen
 
 Configuration
 - Top-level config: config.yaml (ml_provider: local | openai)

@@ -8,10 +8,12 @@ try:
     # When imported as a package: uvicorn backend.main:app
     from .adapters import get_provider, list_providers  # type: ignore
     from .models.db import create_db  # type: ignore
+    from .routes.laundry import router as laundry_router  # type: ignore
     from .settings import Settings  # type: ignore
 except Exception:  # pragma: no cover - fallback for local runs/tests
     from adapters import get_provider, list_providers
     from models.db import create_db
+    from routes.laundry import router as laundry_router
     from settings import Settings
 
 
@@ -31,6 +33,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+app.include_router(laundry_router)
 
 
 @app.get("/api/health")

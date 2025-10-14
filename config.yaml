@@ -1,0 +1,2 @@
+ml_provider: local
+# For openai provider, set OPENAI_API_KEY in environment or .env

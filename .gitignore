@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+laundry.db
+
+# Node
+node_modules/
+dist/
+.vite/
+.parcel-cache/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Docker
+*.log
+docker-data/
+
+# Editors
+.idea/
+.vscode/

@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    env_file:
+      - ../.env
+    volumes:
+      - ../config.yaml:/app/config.yaml:ro
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    environment:
+      - VITE_API_URL=http://backend:8000
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

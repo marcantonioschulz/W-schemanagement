@@ -12,6 +12,7 @@ ml_provider: local
 Environment variables (see .env.example):
 - OPENAI_API_KEY: required if ml_provider=openai
 - HOST (default 0.0.0.0) and PORT (default 8000) for backend
+- LAUNDRY_DATABASE_URL: override default SQLite path (supports sqlite, postgres, etc.)
 - VITE_API_URL for frontend to reach backend (default http://localhost:8000)
 
 Docker Compose
